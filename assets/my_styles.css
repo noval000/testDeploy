@@ -1,0 +1,375 @@
+
+.schedule-wrapper {
+    font-size: 11pt;
+    font-family: Verdana, serif;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+#frame_blink {
+    position: absolute;
+    overflow: scroll;
+    /*z-index: 5;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+}
+
+#blink-container {
+    /*overflow: scroll;*/
+    position: fixed;
+    top: 50%;
+    left: 35%;
+    width: 40%;
+    height: 50%;
+    border: 1px solid #000;
+    background-color: #cbcbcb;
+    visibility: hidden;
+    margin-top: -250px;
+    margin-left: -250px;
+    z-index: 3;
+}
+
+
+.schedule-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(3, 1fr);
+    z-index: 2;
+}
+#schedule-container-1, #schedule-container-2, #schedule-container-3 {
+    display: grid;
+    /*overflow: hidden;*/
+    grid-auto-flow: column;
+    grid-template-columns: [time] 60px repeat(3, minmax(50px, 1fr));
+    /*grid-template-columns: [time] 8% [schedule-1] 46% [schedule-2] 46%;*/
+    grid-template-rows: repeat(240, 1fr); /* 15 минут * 4 = 1 час 96 */
+    height: 95vh; /* Растягиваем по высоте экрана */
+    border: 1px solid #000;
+    justify-content: start;
+    /*z-index: 2;*/
+}
+
+.room-container {
+    width: 100%;
+    flex-direction: column;
+}
+
+.room-item {
+    display: grid;
+    /*overflow: hidden;*/
+    grid-auto-flow: column;
+    /*grid-template-columns: repeat(6, minmax(50px, 1fr));*/
+    /*grid-template-columns: [time] 8% [schedule-1] 46% [schedule-2] 46%;*/
+    grid-template-rows: repeat(240, 1fr); /* 15 минут * 4 = 1 час 96 */
+    height: 95vh; /* Растягиваем по высоте экрана */
+    border: 1px solid #000;
+    justify-content: start;
+    /*z-index: 2;*/
+}
+
+.schedule-container-1column {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(1, 1fr);
+    z-index: 2;
+}
+#schedule-container-1-1column {
+    display: grid;
+    /*overflow: hidden;*/
+    grid-auto-flow: column;
+    grid-template-columns: [time] 60px repeat(2, minmax(50px, 1fr));
+    /*grid-template-columns: [time] 8% [schedule-1] 46% [schedule-2] 46%;*/
+    grid-template-rows: repeat(240, 1fr); /* 15 минут * 4 = 1 час 96 */
+    height: 95vh; /* Растягиваем по высоте экрана */
+    border: 1px solid #000;
+    justify-content: start;
+    /*z-index: 2;*/
+}
+
+.time-slot {
+    grid-row: span 15 / span 15;
+    grid-column: time;
+    /*position: sticky;*/
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reception-item {
+    word-break: break-all;
+    grid-column: 1 / 2;
+    border: 1px solid #000;
+    background-color: #cce5ff;
+    align-items: center;
+    width: 100%;
+}
+
+/*Filler start*/
+.schedule-container-filler {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(3, 1fr);
+    z-index: 1;
+}
+#schedule-container-filler-1, #schedule-container-filler-2, #schedule-container-filler-3 {
+    display: grid;
+    /*overflow: hidden;*/
+    grid-auto-flow: column;
+    /*grid-template-columns: [time] minmax(50px, 8%) [schedule-1] minmax(auto, 23%) [schedule-2] minmax(auto, 23%)  [schedule-3] minmax(auto, 23%)  [schedule-4] minmax(auto, 23%) ;*/
+    /*grid-template-columns: [time] 8% [schedule-1] 46% [schedule-2] 46%;*/
+    grid-template-columns: [time] 60px [schedule-1] minmax(100px, 1fr) [schedule-2] minmax(100px, 1fr) [post-1] minmax(100px, 1fr);
+    grid-template-rows: repeat(240, 1fr); /* 15 минут * 4 = 1 час 96 */
+    height: 95vh; /* Растягиваем по высоте экрана */
+    border: 0.5px solid #000;
+    justify-content: start;
+    /*z-index: 1;*/
+}
+
+.schedule-container-filler-1column {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(1, 1fr);
+    z-index: 1;
+}
+#schedule-container-filler-1-1column {
+    display: grid;
+    /*overflow: hidden;*/
+    grid-auto-flow: column;
+    /*grid-template-columns: [time] minmax(50px, 8%) [schedule-1] minmax(auto, 23%) [schedule-2] minmax(auto, 23%)  [schedule-3] minmax(auto, 23%)  [schedule-4] minmax(auto, 23%) ;*/
+    /*grid-template-columns: [time] 8% [schedule-1] 46% [schedule-2] 46%;*/
+    grid-template-columns: [time] 60px [schedule-1] minmax(100px, 1fr);
+    grid-template-rows: repeat(240, 1fr); /* 15 минут * 4 = 1 час 96 */
+    height: 95vh; /* Растягиваем по высоте экрана */
+    border: 0.5px solid #000;
+    justify-content: start;
+    /*z-index: 1;*/
+}
+
+.schedule-tmp-item {
+    grid-column: 2/2;
+    border: 1px solid #000;
+    align-items: center;
+    width: 100%;
+}
+
+/*Filler end*/
+.header-container {
+    grid-auto-flow: column;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+}
+
+.rooms-header-container {
+    grid-auto-flow: column;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: center;
+}
+
+/* Style the header */
+.header {
+    display: grid;
+    grid-template-columns: 60px  minmax(100px, 1fr)  minmax(100px, 1fr) minmax(100px, 1fr);
+    grid-auto-flow: column;
+    text-align: center;
+    font-size: 35px;
+}
+.room-header {
+    display: grid;
+    grid-template-columns: 60px  minmax(100px, 1fr);
+    grid-auto-flow: column;
+    text-align: center;
+    font-size: 35px;
+}
+
+.head {
+    border: 1px solid #000;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: 700;
+    background-color: #777;
+    /*-webkit-box-shadow: inset 0px 0px 3px #777;*/
+    /*        box-shadow: inset 0px 0px 3px #777;*/
+    font-size: 18px;
+    align-items: center;
+}
+
+#table__title {
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 16pt;
+    font-weight: bold;
+    line-height: 28px;
+    margin: 5px 0;
+    color: #fb0601;
+}
+
+
+table {
+    left: 0;
+    top: 0;
+    font-size: 14pt;
+    position: absolute;
+    width: 100%;
+    /*height: 100%;*/
+    border-spacing: 0px;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+table > thead {
+    width: 100px;
+    height: 10px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+tr > td {
+    border: 1px solid #555;
+    /*padding: 15px;*/
+    position: relative;
+}
+
+tr > td:first-child {
+    width: 70px;
+    font-weight: bold;
+}
+
+
+.elem-info {
+    position: relative;
+    flex-direction: column;
+    display: flex;
+    height: 24px;
+}
+
+.elem-info-left {
+    position: relative;
+    flex-direction: column;
+    display: flex;
+    top: 3px;
+    height: 24px;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.reception-item-tags {
+    position: absolute;
+    display: flex;
+    right: 0;
+    top: 0;
+}
+
+.reception-item-tags-item {
+    text-align: center;
+    align-content: center;
+    width: 22px;
+    height: 22px;
+    font-size: 10pt;
+    border: 1px solid #555;
+    overflow: hidden;
+}
+
+.person-name {
+    font-weight: bold;
+}
+.vip-item {
+    color: white;
+    background-color: black
+}
+
+.positive-hhs-item {
+    color: red;
+    background-color: black
+}
+
+.trouble-maker-item {
+    color: white;
+    background-color: brown
+}
+
+
+.circle {
+    width: 15px;
+    height: 15px;
+    margin-top: 1px;
+    margin-left: 3px;
+    float: none;
+    border: 1px solid black;
+    border-radius: 100%;
+    background: transparent;
+}
+
+.circle-WaitingForPatient {
+    background: transparent;
+}
+.circle-PatientHasCome {
+    background: red;
+}
+.circle-Completed {
+    background: #00ff00;
+}
+.circle-Cancelled {
+    background: #ff8800;
+}
+
+.triangle {
+    width: 15px;
+    height: 15px;
+    margin-top: 1px;
+    margin-left: 3px;
+    float: none;
+    stroke: black;
+    stroke-width: 1px;
+    fill: transparent;
+}
+svg:not(:root) {
+    overflow-clip-margin: content-box;
+    overflow: hidden;
+}
+.triangle-WaitingForPatient {
+    fill: transparent;
+}
+.triangle-PatientHasCome {
+    fill: red;
+}
+.triangle-Completed {
+    fill: #00ff00;
+}
+.triangle-Cancelled {
+    fill: #ff8800;
+}
+
+.active-room-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.active-reception-item {
+    width: 100%;
+}

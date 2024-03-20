@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="assets/my_styles.css">
+<!--    <meta name="viewport" content="width=device-width, initial-scale=0.7">-->
+</head>
+<body>
+    <div>
+        <table id="table">
+            <thead>
+                <tr>
+                    <td>№ карты</td>
+                    <td>Пациент</td>
+                    <td>Напоминание</td>
+                </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+        </table>
+    </div>
+
+    <script src="./data/PatientsWithRecordsNotFilledInTime.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function fillBlinkTable(list) {
+            return list.map(r => {
+                const {cardNo, personName, reason} = r
+                const slot = document.createElement('tr');
+                const tdCardNo = document.createElement('td');
+                tdCardNo.textContent = cardNo;
+                const tdPatientName = document.createElement('td');
+                tdPatientName.textContent = personName;
+                const tdReason = document.createElement('td');
+                tdReason.textContent = reason;
+                slot.appendChild(tdCardNo);
+                slot.appendChild(tdPatientName);
+                slot.appendChild(tdReason);
+                //element.appendChild(slot)
+                return slot;
+            })
+        }
+
+            //const table = document.getElementById("table");
+            const tBody = document.getElementById('table-body');
+            tBody.childNodes.forEach(s => {
+                tBody.removeChild(s)
+            })
+            //tBody.classList.add('table');
+            // const tr = document.createElement('tr');
+            // const tdCardNo = document.createElement('td');
+            // const tdPatientName = document.createElement('td');
+            // const tdReason = document.createElement('td');
+            // tr.appendChild(tdCardNo);
+            // tr.appendChild(tdPatientName);
+            // tr.appendChild(tdReason);
+            // tBody.appendChild(tr);
+
+            fillBlinkTable(listPatientsWithRecordsNotFilledInTime).forEach(e => {tBody.appendChild(e)})
+
+            //table.appendChild(tBody);
+    </script>
+</body>
+
+</html>
